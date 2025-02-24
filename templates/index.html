@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YOLOv8 Image Detection</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .upload-btn { margin-top: 20px; }
+        img { width: 500px; margin-top: 20px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <h1>YOLOv8 Object Detection</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit" class="upload-btn">Upload & Detect</button>
+    </form>
+
+    {% if filename %}
+        <h2>Result:</h2>
+        <img src="{{ url_for('send_uploaded_file', filename=filename) }}" alt="Processed Image">
+    {% endif %}
+</body>
+</html>
